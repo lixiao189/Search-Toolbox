@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Application-Name: Search Toolbox
+Permissions: sandbox
+Codebase: http://aiguy.org http://www.aiguy.org file://*
+Caller-Allowable-Codebase: http://aiguy.org http://www.aiguy.org file://*
+Application-Library-Allowable-Codebase: http://aiguy.org http://www.aiguy.org file://*
+Created-By: Johan Hagelbäck
+X-COMMENT: Main-Class will be added automatically by build
+
