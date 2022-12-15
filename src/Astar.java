@@ -64,8 +64,40 @@ public class Astar extends SearchMethod {
     private Node getNextToVisit() {
         //Pick first node...
         Node bestNode = open.elementAt(0);
+        double minLen = heuristic(bestNode, end);
+
+        for (Node node : open) {
+            double len = heuristic(node, end);
+
+            if (len < minLen) {
+                minLen = len;
+                bestNode = node;
+            }
+        }
+
+        open.remove(bestNode);
 
         return bestNode;
+    }
+
+    /**
+     * Calculates the length (Euclidean distance) between two nodes using
+     * Pythagoras theorem.
+     *
+     * @param a The first node
+     * @param b The second node
+     * @return The distance between the nodes
+     */
+    private double heuristic(Node a, Node b) {
+        if (a == null || b == null)
+            return 0;
+        double sqX = Math.pow(b.x - a.x, 2);
+        double sqY = Math.pow(b.y - a.y, 2);
+        double lenToGoal = Math.sqrt(sqX + sqY);
+
+        calculateActualCost(a);
+
+        return lenToGoal + a.actual;
     }
 
     /**
